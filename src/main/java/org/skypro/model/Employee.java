@@ -4,8 +4,8 @@ import java.util.Objects;
 public class Employee {
 
 	private int id;
-	private String first_name;
-	private String last_name;
+	private String firstName;
+	private String lastName;
 	private String gender;
 	private int age;
 	private City city;
@@ -13,21 +13,28 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(int id, String first_name, String last_name, String gender, int age, City city) {
+	public Employee(int id, String firstName, String lastName, String gender, int age, City city) {
 		this.id = id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.gender = gender;
 		this.age = age;
 		this.city = city;
 	}
 
-	public Employee(String first_name, String last_name, String gender, int age, City city) {
-		this.first_name = first_name;
-		this.last_name = last_name;
+	public Employee(String firstName, String lastName, String gender, int age, City city) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.gender = gender;
 		this.age = age;
 		this.city = city;
+	}
+
+	public Employee(String firstName, String lastName, String gender, int age) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.age = age;
 	}
 
 	public int getId() {
@@ -38,20 +45,20 @@ public class Employee {
 		this.id = id;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastname() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getGender() {
@@ -83,17 +90,17 @@ public class Employee {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Employee employee = (Employee) o;
-		return getId() == employee.getId() && getAge() == employee.getAge() && Objects.equals(getFirst_name(), employee.getFirst_name()) && Objects.equals(getLast_name(), employee.getLast_name()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getCity(), employee.getCity());
+		return getId() == employee.getId() && getAge() == employee.getAge() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(lastName, employee.lastName) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getCity(), employee.getCity());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getId(), getFirst_name(), getLast_name(), getGender(), getAge(), getCity());
+		return Objects.hash(getId(), getFirstName(), lastName, getGender(), getAge(), getCity());
 	}
 
 	@Override
 	public String toString() {
 		return String.format("id: %d, first_name: %s, last_name: %s, gender: %s, age: %d",
-				id,first_name,last_name,gender,age);
+				id,firstName,lastName,gender,age);
 	}
 }

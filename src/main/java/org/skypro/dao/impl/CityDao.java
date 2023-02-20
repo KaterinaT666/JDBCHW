@@ -1,0 +1,12 @@
+package org.skypro.dao.impl;
+
+import org.skypro.model.City;
+
+import java.util.Optional;
+
+public interface CityDao {
+
+	Optional<City> findById(int id);
+
+
+}
