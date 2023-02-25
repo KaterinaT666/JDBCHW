@@ -1,12 +1,24 @@
 package org.skypro.model;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
+
+@Entity
+@Table(name = "city")
 
 public class City {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Column(name = "city_id")
 	private int cityId;
+	@Column(name = "city_name",nullable = false)
 	private String cityName;
 
+	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+	private List<Employee> employees;
 
 	public City() {
 	}
@@ -47,7 +59,6 @@ public class City {
 
 	@Override
 	public String toString() {
-		return cityName +
-				"c id = " + cityId;
+		return cityId +", cityName = " + cityName;
 	}
 }

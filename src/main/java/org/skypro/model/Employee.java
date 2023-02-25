@@ -1,13 +1,29 @@
 package org.skypro.model;
+
+
+import javax.persistence.*;
 import java.util.Objects;
 
-public class Employee {
 
+@Entity
+@Table(name = "employee")
+public class Employee {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Column(name = "id")
 	private int id;
+	@Column(name = "first_name",nullable = false)
 	private String firstName;
+
+	@Column(name = "last_name",nullable = false)
 	private String lastName;
+	@Column(name = "gender",nullable = false)
 	private String gender;
+	@Column(name = "age")
 	private int age;
+	@ManyToOne
+	@JoinColumn(name = "city")
 	private City city;
 
 	public Employee() {

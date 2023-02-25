@@ -2,11 +2,19 @@ package org.skypro.dao.impl;
 
 import org.skypro.model.City;
 
-import java.util.Optional;
+import java.util.List;
+
 
 public interface CityDao {
 
-	Optional<City> findById(int id);
 
+	void create(City city);
 
+	City readById(int id);
+
+	List<City> readAll();
+
+	City updateById(City city);
+
+	void deleteById(int id);
 }

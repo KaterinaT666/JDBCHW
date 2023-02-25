@@ -1,52 +1,42 @@
 package org.skypro;
+
 import org.skypro.dao.EmployeeDao;
 import org.skypro.dao.impl.EmployeeDaoImpl;
+
 import org.skypro.model.City;
 import org.skypro.model.Employee;
 
-import java.sql.SQLException;
-import java.util.Optional;
+import java.sql.*;
+import java.util.List;
 
 
 public class Application {
-	public static void main(String[] args) throws SQLException{
+	public static void main(String[] args) throws SQLException {
+		// Создаем объект класса ДАО
 		EmployeeDao employeeDao = new EmployeeDaoImpl();
-		City city1 = new City(1,"Москва");
-		City city2 = new City(2, "Санкт-Петербург");
-		City city3 = new City(3, "Казань");
 
-		employeeDao.create(new Employee
-				("Иван","Иванов","муж", 45, city1))
-				.ifPresent(employee-> System.out.println("Добавленный сотрудник: " + employee));
-		Optional<Employee> employeeOptional = employeeDao.create(new Employee
-						("Мария","Иванова","ж", 25, city2));
-		employeeOptional.ifPresent(employee-> System.out.println("Добавленный сотрудник: " + employee));
-		employeeDao.create(new Employee
-						("Семен","Семенов","муж", 34, city3))
-				.ifPresent(employee-> System.out.println("Добавленный сотрудник: " + employee));
-		employeeDao.create(new Employee
-						("Леонид","Васильев","муж", 32))
-				.ifPresent(employee-> System.out.println("Добавленный сотрудник: " + employee));
+		Employee employee1 = new Employee("Timofej", "Obramov", "mail", 31);
+		// Создаем объект
+		employeeDao.create(employee1);
+		System.out.println(employee1);
 
-		System.out.println("Все сотрудники: ");
-		employeeDao.readAll().forEach(System.out::println);
+		// Получаем объект по id
+		System.out.println(employeeDao.readById(11));
 
-		if (employeeOptional.isPresent()){
-			employeeDao.readById(employeeOptional.get().getId())
-					.ifPresent(employee -> System.out.println("Найденный сотрудник: " + employee));
+		// Получаем полный список объектов
+		List<Employee> list = employeeDao.readAll();
+
+		for (Employee employee : list) {
+			System.out.println(employee);
 		}
 
-		if (employeeOptional.isPresent()){
-			Employee employee =employeeOptional.get();
-			employee.setAge(40);
-			employee.setFirstName("Анатолий");
-			employeeDao.updateById(employee)
-					.ifPresent(emp -> System.out.println("Обновленный сотрудник: " + emp));
-		}
-		if (employeeOptional.isPresent()){
-			employeeDao.deleteById(employeeOptional.get().getId())
-					.ifPresent(emp -> System.out.println("Удаленный сотрудник: " + emp));
-		}
+		Employee employee2 = new Employee( 10,"lubochka", "Obramova", "femail",32, new City(4,"Ереван"));
+
+		// Изменяем объект
+		employeeDao.updateById(employee1);
+
+		// Удаляем объект
+		employeeDao.deleteById(employee2);
 
 	}
 }

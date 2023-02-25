@@ -2,18 +2,20 @@ package org.skypro.dao;
 
 import org.skypro.model.Employee;
 
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 public interface EmployeeDao {
-	Optional<Employee> create(Employee employee);
+	void create(Employee employee)throws SQLException;
 
-	Optional<Employee> readById(int id);
+	Employee readById(int id);
 
 	List<Employee> readAll();
 
-	Optional<Employee> updateById(Employee employee);
+	void updateById(Employee employee);
 
-	Optional<Employee> deleteById(int id);
+	void deleteById(Employee employee);
+
+
 }
 

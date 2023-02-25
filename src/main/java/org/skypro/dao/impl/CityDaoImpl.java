@@ -1,35 +1,52 @@
 package org.skypro.dao.impl;
 
-import jdbc.ConnectionManager;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.skypro.config.HibernateSessionFactoryUtil;
 import org.skypro.model.City;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Optional;
+import java.util.List;
 
 public class CityDaoImpl implements CityDao{
-	private static final String FIND_BY_ID = "SELECT * FROM city WHERE city_id = ?";
+
+	@Override
+	public void create(City city) {
+		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();) {
+			Transaction transaction = session.beginTransaction();
+			session.save(city);
+			transaction.commit();
+		}
+	}
+
+	@Override
+	public City readById(int id) {
+		return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(City.class, id);
+	}
+
+	@Override
+	public List<City> readAll() {
+		List<City> cities = (List<City>) HibernateSessionFactoryUtil
+				.getSessionFactory().openSession().createQuery("from City", City.class).list();
+		return cities;
+	}
 
 
 	@Override
-	public Optional<City> findById(int id) {
-		try(Connection connection = ConnectionManager.getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID)){
-				preparedStatement.setInt(1,id);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()) {
-				return Optional.of(
-						new City(
-								resultSet.getInt("city_id"),
-								resultSet.getString("city_name")
-						)
-				);
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
+	public City updateById(City city) {
+		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+			Transaction transaction = session.beginTransaction();
+			session.update(city);
+			transaction.commit();
 		}
-		return Optional.empty();
+		return updateById(city);
+	}
+
+	@Override
+	public void deleteById(int id) {
+		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+			Transaction transaction = session.beginTransaction();
+			session.delete(id);
+			transaction.commit();
+		}
 	}
 }
