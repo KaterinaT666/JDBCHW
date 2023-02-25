@@ -6,15 +6,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface EmployeeDao {
-	void create(Employee employee)throws SQLException;
+	void createEmployee(Employee employee)throws SQLException;
 
-	Employee readById(int id);
+	Employee readEmployeeById(int id);
 
-	List<Employee> readAll();
+	List<Employee> readAllEmployees();
 
-	void updateById(Employee employee);
+	void updateEmployee(Employee employee);
 
-	void deleteById(Employee employee);
+	void deleteEmployee(Employee employee);
 
 
 }

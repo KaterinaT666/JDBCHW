@@ -10,7 +10,7 @@ import java.util.List;
 public class CityDaoImpl implements CityDao{
 
 	@Override
-	public void create(City city) {
+	public void createCity(City city) {
 		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();) {
 			Transaction transaction = session.beginTransaction();
 			session.save(city);
@@ -19,12 +19,12 @@ public class CityDaoImpl implements CityDao{
 	}
 
 	@Override
-	public City readById(int id) {
+	public City readCityById(int id) {
 		return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(City.class, id);
 	}
 
 	@Override
-	public List<City> readAll() {
+	public List<City> readAllCity() {
 		List<City> cities = (List<City>) HibernateSessionFactoryUtil
 				.getSessionFactory().openSession().createQuery("from City", City.class).list();
 		return cities;
@@ -32,20 +32,19 @@ public class CityDaoImpl implements CityDao{
 
 
 	@Override
-	public City updateById(City city) {
+	public void updateCity(City city) {
 		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
 			Transaction transaction = session.beginTransaction();
 			session.update(city);
 			transaction.commit();
 		}
-		return updateById(city);
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public void deleteCity(City city) {
 		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
 			Transaction transaction = session.beginTransaction();
-			session.delete(id);
+			session.delete(city);
 			transaction.commit();
 		}
 	}

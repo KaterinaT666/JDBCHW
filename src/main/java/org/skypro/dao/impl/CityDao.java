@@ -2,19 +2,20 @@ package org.skypro.dao.impl;
 
 import org.skypro.model.City;
 
+import java.sql.SQLException;
 import java.util.List;
 
 
 public interface CityDao {
 
 
-	void create(City city);
+	void createCity(City city)throws SQLException;
 
-	City readById(int id);
+	City readCityById(int id);
 
-	List<City> readAll();
+	List<City> readAllCity();
 
-	City updateById(City city);
+	void updateCity(City city);
 
-	void deleteById(int id);
+	void deleteCity(City city);
 }

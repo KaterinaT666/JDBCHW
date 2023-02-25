@@ -14,7 +14,7 @@ import java.util.List;
 public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
-	public void create(Employee employee) {
+	public void createEmployee(Employee employee) {
 		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();) {
 			Transaction transaction = session.beginTransaction();
 			session.save(employee);
@@ -23,12 +23,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee readById(int id) {
+	public Employee readEmployeeById(int id) {
 		return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Employee.class, id);
 	}
 
 	@Override
-	public List<Employee> readAll() {
+	public List<Employee> readAllEmployees() {
 		List<Employee> employees = (List<Employee>) HibernateSessionFactoryUtil
 				.getSessionFactory().openSession().createQuery("from Employee", Employee.class).list();
 		return employees;
@@ -36,7 +36,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 
 	@Override
-	public void updateById(Employee employee) {
+	public void updateEmployee(Employee employee) {
 		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
 			Transaction transaction = session.beginTransaction();
 			session.update(employee);
@@ -45,7 +45,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public void deleteById(Employee employee) {
+	public void deleteEmployee(Employee employee) {
 		try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
 			Transaction transaction = session.beginTransaction();
 			session.delete(employee);

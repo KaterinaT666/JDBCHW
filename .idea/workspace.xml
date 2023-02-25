@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df9fbc14-5ae2-4bba-a92d-f55a24f32212" name="Changes" comment="исправлены ошибки">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/skypro/config/HibernateSessionFactoryUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+    <list default="true" id="df9fbc14-5ae2-4bba-a92d-f55a24f32212" name="Changes" comment="сделано ДЗ 1 по Hibernate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jdbc/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jdbc/ConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/skypro/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/skypro/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/skypro/dao/EmployeeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/skypro/dao/EmployeeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/skypro/dao/impl/CityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/skypro/dao/impl/CityDao.java" afterDir="false" />
@@ -75,7 +71,7 @@
       <workItem from="1676702605931" duration="3880000" />
       <workItem from="1676884371219" duration="20845000" />
       <workItem from="1677241461792" duration="17618000" />
-      <workItem from="1677320396228" duration="11722000" />
+      <workItem from="1677320396228" duration="17845000" />
     </task>
     <task id="LOCAL-00001" summary="первый коммит">
       <created>1676661663986</created>
@@ -91,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676917494722</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="сделано ДЗ 1 по Hibernate">
+      <created>1677354548899</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677354548899</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="первый коммит" />
     <MESSAGE value="исправлены ошибки" />
-    <option name="LAST_COMMIT_MESSAGE" value="исправлены ошибки" />
+    <MESSAGE value="сделано ДЗ 1 по Hibernate" />
+    <option name="LAST_COMMIT_MESSAGE" value="сделано ДЗ 1 по Hibernate" />
   </component>
 </project>
